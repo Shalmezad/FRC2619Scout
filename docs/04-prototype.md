@@ -51,6 +51,26 @@ python3 -m http.server 8080 -d app
 and the directory-URL quirk). Hosted on the team's existing S3 + CloudFront infra; free to run.
 Open that URL on a phone and use "Add to Home Screen" to install it like a native app.
 
+## Bug fixes from real-device testing (2026-11-19)
+
+Found by testing the live deployment (laptop = lead, phone = scout):
+
+1. **Team # field too skinny on mobile (showed ~1 digit).** Two causes: `.grid-2` used
+   `1fr` tracks, which don't shrink below the inputs' intrinsic width — tracks blew out to
+   368px each and the page overflowed 375px — and `type="number"` spinners ate width.
+   Fixed: `minmax(0, 1fr)` tracks, `type="text" inputmode="numeric"` inputs (stepper logic
+   hardened for text), 40px buttons + tighter padding in `.grid-2`.
+   Verified at 375px: "2619" needs 43px, 54px available; no horizontal page overflow.
+2. **Lead camera previewed but never scanned.** The decode loop tested
+   `video.readyState >= video.videoWidth` — comparing state 4 against a pixel count (1280),
+   always false — so jsQR never ran. Fixed to `video.HAVE_CURRENT_DATA`.
+   The pipeline was extracted to module level as `__processFrame(source)` (testable with a
+   canvas instead of a camera), throttled to ~15 fps, `inversionAttempts: 'attemptBoth'`.
+
+**Deploy gotcha:** after `./deploy.sh`, devices show the *previous* build on their first
+load (service worker stale-while-revalidate serves cache first, refreshes in background) and
+the new build from the second load on. Reload once if you just deployed.
+
 ## Test results (Playwright, 2026-11-19)
 
 | Test | Result |

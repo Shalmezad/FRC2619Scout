@@ -1,0 +1,68 @@
+- generic [active] [ref=f16e1]:
+  - banner [ref=f16e2]:
+    - generic [ref=f16e3]:
+      - generic [ref=f16e4]: ⚡
+      - heading "Charge Scout" [level=1] [ref=f16e5]
+    - tablist [ref=f16e6]:
+      - tab "Scout" [selected] [ref=f16e7] [cursor=pointer]
+      - tab "Lead" [ref=f16e8] [cursor=pointer]
+  - main [ref=f16e9]:
+    - region "Scout data entry" [ref=f16e10]:
+      - generic [ref=f16e11]:
+        - generic [ref=f16e12]:
+          - generic [ref=f16e13]:
+            - generic [ref=f16e14]: "Match #"
+            - generic [ref=f16e15]:
+              - button "Fewer" [ref=f16e16] [cursor=pointer]: −
+              - textbox "0" [ref=f16e17]
+              - button "More" [ref=f16e18] [cursor=pointer]: +
+          - generic [ref=f16e19]:
+            - generic [ref=f16e20]: "Team #"
+            - generic [ref=f16e21]:
+              - button "Fewer" [ref=f16e22] [cursor=pointer]: −
+              - textbox "0" [ref=f16e23]
+              - button "More" [ref=f16e24] [cursor=pointer]: +
+        - group "Position" [ref=f16e25]:
+          - generic [ref=f16e27]:
+            - button "R1" [ref=f16e28] [cursor=pointer]
+            - button "R2" [ref=f16e29] [cursor=pointer]
+            - button "R3" [ref=f16e30] [cursor=pointer]
+            - button "B1" [ref=f16e31] [cursor=pointer]
+            - button "B2" [ref=f16e32] [cursor=pointer]
+            - button "B3" [ref=f16e33] [cursor=pointer]
+        - generic [ref=f16e34]:
+          - generic [ref=f16e35]: Balls scored
+          - generic [ref=f16e36]:
+            - button "Fewer" [ref=f16e37] [cursor=pointer]: −
+            - textbox [ref=f16e38]: "0"
+            - button "More" [ref=f16e39] [cursor=pointer]: +
+        - generic [ref=f16e40]:
+          - generic [ref=f16e41]:
+            - generic [ref=f16e42]: Broke down?
+            - generic [ref=f16e43]:
+              - button "No" [ref=f16e44] [cursor=pointer]
+              - button "Yes" [ref=f16e45] [cursor=pointer]
+          - generic [ref=f16e46]:
+            - generic [ref=f16e47]: Climbed?
+            - generic [ref=f16e48]:
+              - button "No" [ref=f16e49] [cursor=pointer]
+              - button "Yes" [ref=f16e50] [cursor=pointer]
+        - generic [ref=f16e51]:
+          - generic [ref=f16e52]: Notes (optional)
+          - textbox "Notes (optional)" [ref=f16e53]:
+            - /placeholder: Defense, driver issues, contact…
+        - button "Save & show QR" [ref=f16e54] [cursor=pointer]
+      - generic [ref=f16e55]:
+        - heading "On this device (1)" [level=2] [ref=f16e56]:
+          - text: On this device
+          - generic [ref=f16e57]: (1)
+        - list [ref=f16e58]:
+          - listitem [ref=f16e59]:
+            - generic [ref=f16e60]:
+              - generic [ref=f16e61]: M7 · Team 2619 · R1
+              - generic [ref=f16e62]: 4 balls · live deploy test
+            - button "QR" [ref=f16e63] [cursor=pointer]
+            - button "Delete record" [ref=f16e64] [cursor=pointer]: ✕
+        - generic [ref=f16e65]:
+          - button "Export CSV" [ref=f16e66] [cursor=pointer]
+          - button "Backup JSON" [ref=f16e67] [cursor=pointer]

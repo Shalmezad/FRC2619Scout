@@ -60,6 +60,9 @@ for consolidation. No network at venues is the normal case.
   `CACHE` in `app/sw.js`.**
 - Test after deploying: load the URL, save a record, then DevTools → Network → Offline → reload
   (must still work — that's the venue acceptance test).
+- **After a deploy, existing devices show the old build on their first load** (the service
+  worker serves cache-first and revalidates in the background) — the new build appears on the
+  second load. Don't panic if a fix seems missing; reload.
 
 ## Data format (v1)
 
