@@ -40,15 +40,20 @@ for consolidation. No network at venues is the normal case.
 ## Useful commands
 
 - Serve locally (HTTPS or localhost required for camera): `python3 -m http.server 8080 -d app`
-- **Deploy**: `./deploy.sh` → uploads `app/` to `$SCOUT_BUCKET/FRC2619Scout/` with explicit
-  content types and invalidates CloudFront. Live URL:
+- **Deploy**: `SCOUT_BUCKET=s3://… ./deploy.sh` → uploads `app/` to
+  `$SCOUT_BUCKET/FRC2619Scout/` with explicit content types and invalidates CloudFront.
+  (The bucket name and distribution ID are not stored in this repo — it's public.
+  `deploy.sh` takes the bucket from `$SCOUT_BUCKET` and discovers the distribution
+  by its domain alias.) Live URL:
   **https://shalmezad.com/FRC2619Scout/index.html**
 - Regenerate PWA icons: see the PIL snippet in git history (or `docs/04-prototype.md`).
 
 ## Deployment notes
 
-- Bucket `$SCOUT_BUCKET` is **private** (CloudFront OAI only) — never make it public.
-  Distribution: `auto-discovered` (aliases shalmezad.com + www).
+- The S3 bucket behind the site is **private** (CloudFront OAI only) — never make it public.
+  Bucket name and CloudFront distribution ID are intentionally absent from this repo:
+  set `$SCOUT_BUCKET` when deploying; the distribution is auto-discovered by its
+  `shalmezad.com` alias.
 - **The canonical URL is `/FRC2619Scout/index.html`.** The bare directory URL
   `/FRC2619Scout/` serves the *root site's* SPA 404 page (CloudFront error handling) — not our
   app. The manifest `start_url` already points at `./index.html`.
