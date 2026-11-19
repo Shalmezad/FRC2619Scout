@@ -43,12 +43,13 @@ Both tabs live on the same device — the lead's phone is also a fine place to e
 ```bash
 # from repo root — camera needs localhost or HTTPS
 python3 -m http.server 8080 -d app
-# open http://localhost:8080
+# open http://localhost:8080/index.html
 ```
 
-To try on phones: host the `app/` folder on any HTTPS static host (GitHub Pages is free) —
-that gives you a link the team can open and "Add to Home Screen" on both platforms.
-Camera scanning requires HTTPS (browser rule), not the app itself.
+**Live deployment:** https://shalmezad.com/FRC2619Scout/index.html
+(deploy with `./deploy.sh` — see AGENTS.md → Deployment notes for the bucket/CloudFront setup
+and the directory-URL quirk). Hosted on the team's existing S3 + CloudFront infra; free to run.
+Open that URL on a phone and use "Add to Home Screen" to install it like a native app.
 
 ## Test results (Playwright, 2026-11-19)
 

@@ -12,6 +12,8 @@ for consolidation. No network at venues is the normal case.
 - Research phase done → see `docs/README.md` for index + executive summary.
 - **Prototype v1 works and is tested** (offline acceptance test passed; see `docs/04-prototype.md`
   for the test matrix and next steps). Not yet tried on real phones.
+- **Deployed**: https://shalmezad.com/FRC2619Scout/index.html (live E2E + offline reload verified
+  against this URL on 2026-11-19).
 - Next: real-device testing (iOS Safari + Android Chrome), then 2027 game-specific fields.
 
 ## Repository layout
@@ -38,7 +40,26 @@ for consolidation. No network at venues is the normal case.
 ## Useful commands
 
 - Serve locally (HTTPS or localhost required for camera): `python3 -m http.server 8080 -d app`
+- **Deploy**: `./deploy.sh` → uploads `app/` to `$SCOUT_BUCKET/FRC2619Scout/` with explicit
+  content types and invalidates CloudFront. Live URL:
+  **https://shalmezad.com/FRC2619Scout/index.html**
 - Regenerate PWA icons: see the PIL snippet in git history (or `docs/04-prototype.md`).
+
+## Deployment notes
+
+- Bucket `$SCOUT_BUCKET` is **private** (CloudFront OAI only) — never make it public.
+  Distribution: `auto-discovered` (aliases shalmezad.com + www).
+- **The canonical URL is `/FRC2619Scout/index.html`.** The bare directory URL
+  `/FRC2619Scout/` serves the *root site's* SPA 404 page (CloudFront error handling) — not our
+  app. The manifest `start_url` already points at `./index.html`.
+- Content types are set explicitly on upload (S3's auto-detection mislabels
+  `.webmanifest`, which can break PWA install).
+- Shell files (`index.html`, `styles.css`, `app.js`, `manifest`, `sw.js`) are `no-cache` and the
+  service worker uses stale-while-revalidate for them → app updates go live without users being
+  stuck on an old build. **Vendor libs and icons are cache-first: if you change them, bump
+  `CACHE` in `app/sw.js`.**
+- Test after deploying: load the URL, save a record, then DevTools → Network → Offline → reload
+  (must still work — that's the venue acceptance test).
 
 ## Data format (v1)
 

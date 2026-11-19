@@ -1,0 +1,1 @@
+[  113900ms] [ERROR] [JavaScript Error: "Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://shalmezad.com/FRC2619Scout/. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 200."] @ :1
