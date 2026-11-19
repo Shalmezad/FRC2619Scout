@@ -11,9 +11,10 @@
  * so the same file works locally and on the server.
  */
 
-const CACHE = 'charge-scout-v2';
+const CACHE = 'charge-scout-v3';
+// NOTE: no './' here — the directory URL /FRC2619Scout/ is served by the
+// root site's SPA (404 page), so only index.html is our app shell.
 const SHELL = [
-  './',
   './index.html',
   './styles.css',
   './app.js',
@@ -25,6 +26,8 @@ const STATIC = [
   './icon-192.png',
   './icon-512.png',
 ];
+// Suffixes to match against request pathnames (e.g. '/FRC2619Scout/index.html')
+const SHELL_SUFFIXES = SHELL.map(p => '/' + p.replace('./', ''));
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -47,7 +50,8 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
 
   const url = new URL(req.url);
-  const isShell = req.mode === 'navigate' || SHELL.some(p => url.pathname.endsWith(p.replace('./', '')));
+  const isShell = req.mode === 'navigate' ||
+    SHELL_SUFFIXES.some(suffix => url.pathname.endsWith(suffix));
 
   if (isShell) {
     // stale-while-revalidate
