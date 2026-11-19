@@ -12,6 +12,7 @@ way to consolidate data (e.g. QR → Excel).
 | [01-existing-apps.md](01-existing-apps.md) | Landscape of existing FRC scouting apps (Lovat, QRScout, MergeData, Krawler, …): how they're built, strengths, limitations. |
 | [02-base44-analysis.md](02-base44-analysis.md) | What Base44 actually is, current pricing (Nov 2026), what "web → standalone app" really means, offline behavior, lock-in/cost risks. |
 | [03-publishing-and-offline.md](03-publishing-and-offline.md) | App Store / Play Store developer accounts & fees, alternatives to publishing, and FRC venue network realities (why offline-first is mandatory). |
+| [04-prototype.md](04-prototype.md) | The working PWA prototype in `app/`: features, architecture decisions, test results, next steps. |
 
 ## Executive summary (TL;DR)
 

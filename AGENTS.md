@@ -10,7 +10,9 @@ for consolidation. No network at venues is the normal case.
 ## Status
 
 - Research phase done → see `docs/README.md` for index + executive summary.
-- Prototype phase: offline-first PWA in `app/` (static files, no build step).
+- **Prototype v1 works and is tested** (offline acceptance test passed; see `docs/04-prototype.md`
+  for the test matrix and next steps). Not yet tried on real phones.
+- Next: real-device testing (iOS Safari + Android Chrome), then 2027 game-specific fields.
 
 ## Repository layout
 

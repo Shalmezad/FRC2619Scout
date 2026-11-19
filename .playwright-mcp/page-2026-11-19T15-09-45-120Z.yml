@@ -1,0 +1,64 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: ⚡
+      - heading "Charge Scout" [level=1] [ref=e5]
+    - tablist [ref=e6]:
+      - tab "Scout" [selected] [ref=e7] [cursor=pointer]
+      - tab "Lead" [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - region "Scout data entry" [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: "Match #"
+            - generic [ref=e15]:
+              - button "Fewer" [ref=e16] [cursor=pointer]: −
+              - spinbutton "0" [ref=e17]: "42"
+              - button "More" [ref=e18] [cursor=pointer]: +
+          - generic [ref=e19]:
+            - generic [ref=e20]: "Team #"
+            - generic [ref=e21]:
+              - button "Fewer" [ref=e22] [cursor=pointer]: −
+              - spinbutton "0" [ref=e23]: "2619"
+              - button "More" [ref=e24] [cursor=pointer]: +
+        - group "Position" [ref=e25]:
+          - generic [ref=e27]:
+            - button "R1" [ref=e28] [cursor=pointer]
+            - button "R2" [ref=e29] [cursor=pointer]
+            - button "R3" [ref=e30] [cursor=pointer]
+            - button "B1" [ref=e31] [cursor=pointer]
+            - button "B2" [ref=e32] [cursor=pointer]
+            - button "B3" [ref=e33] [cursor=pointer]
+        - generic [ref=e34]:
+          - generic [ref=e35]: Balls scored
+          - generic [ref=e36]:
+            - button "Fewer" [ref=e37] [cursor=pointer]: −
+            - spinbutton [ref=e38]: "7"
+            - button "More" [ref=e39] [cursor=pointer]: +
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e42]: Broke down?
+            - generic [ref=e43]:
+              - button "No" [ref=e44] [cursor=pointer]
+              - button "Yes" [ref=e45] [cursor=pointer]
+          - generic [ref=e46]:
+            - generic [ref=e47]: Climbed?
+            - generic [ref=e48]:
+              - button "No" [ref=e49] [cursor=pointer]
+              - button "Yes" [active] [ref=e50] [cursor=pointer]
+        - generic [ref=e51]:
+          - generic [ref=e52]: Notes (optional)
+          - textbox "Notes (optional)" [ref=e53]:
+            - /placeholder: Defense, driver issues, contact…
+            - text: Test "note" with, comma
+        - button "Save & show QR" [ref=e54] [cursor=pointer]
+      - generic [ref=e55]:
+        - heading "On this device (0)" [level=2] [ref=e56]:
+          - text: On this device
+          - generic [ref=e57]: (0)
+        - list
+        - paragraph [ref=e58]: Nothing saved yet.
+        - generic [ref=e59]:
+          - button "Export CSV" [ref=e60] [cursor=pointer]
+          - button "Backup JSON" [ref=e61] [cursor=pointer]

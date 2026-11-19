@@ -1,0 +1,29 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: ⚡
+      - heading "Charge Scout" [level=1] [ref=e5]
+    - tablist [ref=e6]:
+      - tab "Scout" [ref=e7] [cursor=pointer]
+      - tab "Lead" [active] [selected] [ref=e8] [cursor=pointer]
+  - main [ref=e9]:
+    - region "Scouting lead collection" [ref=e76]:
+      - generic [ref=e77]:
+        - heading "Scan scouts' QR codes" [level=2] [ref=e78]
+        - button "Start scanning" [ref=e79] [cursor=pointer]
+      - group [ref=e80]:
+        - generic "Paste QR text manually" [ref=e81] [cursor=pointer]
+      - generic [ref=e82]:
+        - heading "Collected (1)" [level=2] [ref=e83]:
+          - text: Collected
+          - generic [ref=e84]: (1)
+        - list [ref=e85]:
+          - listitem [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e88]: M42 · Team 2619 · R1
+              - generic [ref=e89]: 7 balls · BROKE · Climbed · Test "note" with, comma
+            - button "Delete record" [ref=e90] [cursor=pointer]: ✕
+        - generic [ref=e91]:
+          - button "Export CSV (Excel)" [ref=e92] [cursor=pointer]
+          - button "Export JSON" [ref=e93] [cursor=pointer]
+          - button "Clear all" [ref=e94] [cursor=pointer]
