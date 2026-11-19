@@ -1,0 +1,86 @@
+- generic [active] [ref=f12e1]:
+  - banner [ref=f12e2]:
+    - generic [ref=f12e3]:
+      - generic [ref=f12e4]: ⚡
+      - heading "Charge Scout" [level=1] [ref=f12e5]
+    - tablist [ref=f12e6]:
+      - tab "Scout" [selected] [ref=f12e7] [cursor=pointer]
+      - tab "Lead" [ref=f12e8] [cursor=pointer]
+  - main [ref=f12e9]:
+    - region "Scout data entry" [ref=f12e10]:
+      - generic [ref=f12e11]:
+        - generic [ref=f12e12]:
+          - generic [ref=f12e13]:
+            - generic [ref=f12e14]: "Match #"
+            - generic [ref=f12e15]:
+              - button "Fewer" [ref=f12e16] [cursor=pointer]: −
+              - textbox "0" [ref=f12e17]
+              - button "More" [ref=f12e18] [cursor=pointer]: +
+          - generic [ref=f12e19]:
+            - generic [ref=f12e20]: "Team #"
+            - generic [ref=f12e21]:
+              - button "Fewer" [ref=f12e22] [cursor=pointer]: −
+              - textbox "0" [ref=f12e23]
+              - button "More" [ref=f12e24] [cursor=pointer]: +
+        - group "Position" [ref=f12e25]:
+          - generic [ref=f12e27]:
+            - button "R1" [ref=f12e28] [cursor=pointer]
+            - button "R2" [ref=f12e29] [cursor=pointer]
+            - button "R3" [ref=f12e30] [cursor=pointer]
+            - button "B1" [ref=f12e31] [cursor=pointer]
+            - button "B2" [ref=f12e32] [cursor=pointer]
+            - button "B3" [ref=f12e33] [cursor=pointer]
+        - generic [ref=f12e34]:
+          - generic [ref=f12e35]: Balls scored
+          - generic [ref=f12e36]:
+            - button "Fewer" [ref=f12e37] [cursor=pointer]: −
+            - textbox [ref=f12e38]: "0"
+            - button "More" [ref=f12e39] [cursor=pointer]: +
+        - generic [ref=f12e40]:
+          - generic [ref=f12e41]:
+            - generic [ref=f12e42]: Broke down?
+            - generic [ref=f12e43]:
+              - button "No" [ref=f12e44] [cursor=pointer]
+              - button "Yes" [ref=f12e45] [cursor=pointer]
+          - generic [ref=f12e46]:
+            - generic [ref=f12e47]: Climbed?
+            - generic [ref=f12e48]:
+              - button "No" [ref=f12e49] [cursor=pointer]
+              - button "Yes" [ref=f12e50] [cursor=pointer]
+        - generic [ref=f12e51]:
+          - generic [ref=f12e52]: Notes (optional)
+          - textbox "Notes (optional)" [ref=f12e53]:
+            - /placeholder: Defense, driver issues, contact…
+        - button "Save & show QR" [ref=f12e54] [cursor=pointer]
+      - generic [ref=f12e55]:
+        - heading "On this device (4)" [level=2] [ref=f12e56]:
+          - text: On this device
+          - generic [ref=f12e57]: (4)
+        - list [ref=f12e58]:
+          - listitem [ref=f12e59]:
+            - generic [ref=f12e60]:
+              - generic [ref=f12e61]: M12 · Team 2619 · R1
+              - generic [ref=f12e62]: 6 balls
+            - button "QR" [ref=f12e63] [cursor=pointer]
+            - button "Delete record" [ref=f12e64] [cursor=pointer]: ✕
+          - listitem [ref=f12e65]:
+            - generic [ref=f12e66]:
+              - generic [ref=f12e67]: M12 · Team 2619 · R1
+              - generic [ref=f12e68]: 6 balls
+            - button "QR" [ref=f12e69] [cursor=pointer]
+            - button "Delete record" [ref=f12e70] [cursor=pointer]: ✕
+          - listitem [ref=f12e71]:
+            - generic [ref=f12e72]:
+              - generic [ref=f12e73]: M42 · Team 2619 · R1
+              - generic [ref=f12e74]: 7 balls · BROKE · Climbed · Test "note" with, comma
+            - button "QR" [ref=f12e75] [cursor=pointer]
+            - button "Delete record" [ref=f12e76] [cursor=pointer]: ✕
+          - listitem [ref=f12e77]:
+            - generic [ref=f12e78]:
+              - generic [ref=f12e79]: M43 · Team 100 · B2
+              - generic [ref=f12e80]: 3 balls · Climbed · defense
+            - button "QR" [ref=f12e81] [cursor=pointer]
+            - button "Delete record" [ref=f12e82] [cursor=pointer]: ✕
+        - generic [ref=f12e83]:
+          - button "Export CSV" [ref=f12e84] [cursor=pointer]
+          - button "Backup JSON" [ref=f12e85] [cursor=pointer]

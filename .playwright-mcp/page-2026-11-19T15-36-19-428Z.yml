@@ -1,0 +1,74 @@
+- generic [active] [ref=f9e1]:
+  - banner [ref=f9e2]:
+    - generic [ref=f9e3]:
+      - generic [ref=f9e4]: ⚡
+      - heading "Charge Scout" [level=1] [ref=f9e5]
+    - tablist [ref=f9e6]:
+      - tab "Scout" [selected] [ref=f9e7] [cursor=pointer]
+      - tab "Lead" [ref=f9e8] [cursor=pointer]
+  - main [ref=f9e9]:
+    - region "Scout data entry" [ref=f9e10]:
+      - generic [ref=f9e11]:
+        - generic [ref=f9e12]:
+          - generic [ref=f9e13]:
+            - generic [ref=f9e14]: "Match #"
+            - generic [ref=f9e15]:
+              - button "Fewer" [ref=f9e16] [cursor=pointer]: −
+              - spinbutton "0" [ref=f9e17]
+              - button "More" [ref=f9e18] [cursor=pointer]: +
+          - generic [ref=f9e19]:
+            - generic [ref=f9e20]: "Team #"
+            - generic [ref=f9e21]:
+              - button "Fewer" [ref=f9e22] [cursor=pointer]: −
+              - spinbutton "0" [ref=f9e23]
+              - button "More" [ref=f9e24] [cursor=pointer]: +
+        - group "Position" [ref=f9e25]:
+          - generic [ref=f9e27]:
+            - button "R1" [ref=f9e28] [cursor=pointer]
+            - button "R2" [ref=f9e29] [cursor=pointer]
+            - button "R3" [ref=f9e30] [cursor=pointer]
+            - button "B1" [ref=f9e31] [cursor=pointer]
+            - button "B2" [ref=f9e32] [cursor=pointer]
+            - button "B3" [ref=f9e33] [cursor=pointer]
+        - generic [ref=f9e34]:
+          - generic [ref=f9e35]: Balls scored
+          - generic [ref=f9e36]:
+            - button "Fewer" [ref=f9e37] [cursor=pointer]: −
+            - spinbutton [ref=f9e38]: "0"
+            - button "More" [ref=f9e39] [cursor=pointer]: +
+        - generic [ref=f9e40]:
+          - generic [ref=f9e41]:
+            - generic [ref=f9e42]: Broke down?
+            - generic [ref=f9e43]:
+              - button "No" [ref=f9e44] [cursor=pointer]
+              - button "Yes" [ref=f9e45] [cursor=pointer]
+          - generic [ref=f9e46]:
+            - generic [ref=f9e47]: Climbed?
+            - generic [ref=f9e48]:
+              - button "No" [ref=f9e49] [cursor=pointer]
+              - button "Yes" [ref=f9e50] [cursor=pointer]
+        - generic [ref=f9e51]:
+          - generic [ref=f9e52]: Notes (optional)
+          - textbox "Notes (optional)" [ref=f9e53]:
+            - /placeholder: Defense, driver issues, contact…
+        - button "Save & show QR" [ref=f9e54] [cursor=pointer]
+      - generic [ref=f9e55]:
+        - heading "On this device (2)" [level=2] [ref=f9e56]:
+          - text: On this device
+          - generic [ref=f9e57]: (2)
+        - list [ref=f9e58]:
+          - listitem [ref=f9e59]:
+            - generic [ref=f9e60]:
+              - generic [ref=f9e61]: M42 · Team 2619 · R1
+              - generic [ref=f9e62]: 7 balls · BROKE · Climbed · Test "note" with, comma
+            - button "QR" [ref=f9e63] [cursor=pointer]
+            - button "Delete record" [ref=f9e64] [cursor=pointer]: ✕
+          - listitem [ref=f9e65]:
+            - generic [ref=f9e66]:
+              - generic [ref=f9e67]: M43 · Team 100 · B2
+              - generic [ref=f9e68]: 3 balls · Climbed · defense
+            - button "QR" [ref=f9e69] [cursor=pointer]
+            - button "Delete record" [ref=f9e70] [cursor=pointer]: ✕
+        - generic [ref=f9e71]:
+          - button "Export CSV" [ref=f9e72] [cursor=pointer]
+          - button "Backup JSON" [ref=f9e73] [cursor=pointer]

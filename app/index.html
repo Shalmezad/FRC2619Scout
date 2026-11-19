@@ -36,7 +36,7 @@
             <span class="field-label">Match #</span>
             <span class="stepper">
               <button type="button" class="step" data-step="-1" data-target="match" aria-label="Fewer">−</button>
-              <input id="match" name="match" type="number" inputmode="numeric" min="1" placeholder="0" required>
+              <input id="match" name="match" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" required>
               <button type="button" class="step" data-step="1" data-target="match" aria-label="More">+</button>
             </span>
           </label>
@@ -44,7 +44,7 @@
             <span class="field-label">Team #</span>
             <span class="stepper">
               <button type="button" class="step" data-step="-1" data-target="team" aria-label="Fewer">−</button>
-              <input id="team" name="team" type="number" inputmode="numeric" min="1" placeholder="0" required>
+              <input id="team" name="team" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="0" required>
               <button type="button" class="step" data-step="1" data-target="team" aria-label="More">+</button>
             </span>
           </label>
@@ -66,7 +66,7 @@
           <span class="field-label">Balls scored</span>
           <span class="stepper big">
             <button type="button" class="step" data-step="-1" data-target="balls" aria-label="Fewer">−</button>
-            <input id="balls" name="balls" type="number" inputmode="numeric" min="0" value="0">
+            <input id="balls" name="balls" type="text" inputmode="numeric" pattern="[0-9]*" value="0">
             <button type="button" class="step" data-step="1" data-target="balls" aria-label="More">+</button>
           </span>
         </label>

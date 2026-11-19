@@ -60,7 +60,13 @@ section h2 { font-size: 1rem; margin: 20px 0 8px; }
 
 /* ---- form ---- */
 #scout-form { display: flex; flex-direction: column; gap: 14px; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-2 {
+  display: grid;
+  /* minmax(0, …): plain 1fr won't shrink below the inputs' intrinsic width
+     and overflows a 375px phone screen */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
 .field { display: flex; flex-direction: column; gap: 6px; margin: 0; border: 0; padding: 0; }
 .field-label { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
 legend.field-label { padding: 0; }
@@ -78,10 +84,20 @@ input, textarea {
 }
 input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
 input[type="number"] { text-align: center; font-variant-numeric: tabular-nums; }
+/* never show number spinners — they steal width on mobile */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 #notes { resize: vertical; }
 
 .stepper { display: flex; gap: 6px; align-items: stretch; }
-.stepper input { min-width: 0; }
+.stepper input {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
 .step {
   width: 52px; flex: 0 0 52px;
   background: var(--panel-2);
@@ -93,6 +109,11 @@ input[type="number"] { text-align: center; font-variant-numeric: tabular-nums; }
   line-height: 1;
 }
 .step:active { background: var(--accent); border-color: var(--accent); }
+/* match/team sit side-by-side in .grid-2 — shrink buttons and padding so
+   the input can show a full 4-digit team number on a 375px phone */
+.grid-2 .stepper { gap: 4px; }
+.grid-2 .step { width: 40px; flex: 0 0 40px; font-size: 1.35rem; }
+.grid-2 input { padding-left: 6px; padding-right: 6px; font-size: 1rem; }
 .stepper.big input { font-size: 1.6rem; font-weight: 700; padding: 6px; }
 .stepper.big .step { font-size: 1.9rem; width: 64px; flex-basis: 64px; }
 

@@ -284,9 +284,10 @@ function initScoutForm() {
     if (!step) return;
     const input = document.getElementById(step.dataset.target);
     const delta = Number(step.dataset.step);
-    const min = input.min === '' ? -Infinity : Number(input.min);
+    const minAttr = input.getAttribute('min');
+    const min = minAttr == null || minAttr === '' ? -Infinity : Number(minAttr);
     const next = Math.max(min, (Number(input.value) || 0) + delta);
-    input.value = next;
+    input.value = String(next);
   });
 
   // segmented controls (pos / broke / climb)
@@ -351,6 +352,34 @@ let mediaStream = null;
 let scanLoopId = null;
 let lastDecode = { text: '', at: 0 };
 
+// Offscreen frame buffer + stats for the decode pipeline (module-level so the
+// pipeline is testable without a physical camera — see __processFrame).
+const scanCanvas = document.createElement('canvas');
+const scanCtx = scanCanvas.getContext('2d', { willReadFrequently: true });
+const scanStats = (window.__scanStats = { frames: 0, decoded: 0 });
+
+// Shared decode pipeline — takes any drawable source (video or canvas).
+function processFrame(source) {
+  const w = source.videoWidth || source.width;
+  const h = source.videoHeight || source.height;
+  if (!w || !h) return false;
+  if (scanCanvas.width !== w) scanCanvas.width = w;
+  if (scanCanvas.height !== h) scanCanvas.height = h;
+  scanCtx.drawImage(source, 0, 0);
+  const img = scanCtx.getImageData(0, 0, w, h);
+  scanStats.frames++;
+  const found = jsQR(img.data, w, h, { inversionAttempts: 'attemptBoth' });
+  if (!found || !found.data) return false;
+  scanStats.decoded++;
+  const now = Date.now();
+  // ignore the same code held in view repeatedly
+  if (found.data === lastDecode.text && now - lastDecode.at < 3000) return true;
+  lastDecode = { text: found.data, at: now };
+  ingestQRText(found.data);
+  return true;
+}
+window.__processFrame = processFrame; // test hook
+
 function ingestQRText(text, { silent } = {}) {
   const rec = decodeFromQR(text);
   if (!rec) {
@@ -389,24 +418,16 @@ async function startScan() {
   $('#scan-start').hidden = true;
   status.textContent = 'Scanning…';
 
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d', { willReadFrequently: true });
-
-  const tick = () => {
+  let lastTick = 0;
+  const tick = ts => {
     if (!mediaStream) return;
-    if (video.readyState >= video.videoWidth && video.videoWidth > 0) {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      ctx.drawImage(video, 0, 0);
-      const img = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const found = jsQR(img.data, img.width, img.height, { inversionAttempts: 'dontInvert' });
-      if (found && found.data) {
-        const now = Date.now();
-        // ignore the same code held in view repeatedly
-        if (!(found.data === lastDecode.text && now - lastDecode.at < 3000)) {
-          lastDecode = { text: found.data, at: now };
-          ingestQRText(found.data);
-        }
+    // ~15 fps: plenty for QR decoding, much kinder to phone batteries
+    if (ts - lastTick >= 66) {
+      lastTick = ts;
+      // NOTE: readyState is 0..4 — compare against HAVE_CURRENT_DATA (2),
+      // never against videoWidth (a pixel count) — that was a real bug.
+      if (video.readyState >= video.HAVE_CURRENT_DATA && video.videoWidth > 0) {
+        processFrame(video);
       }
     }
     scanLoopId = requestAnimationFrame(tick);
