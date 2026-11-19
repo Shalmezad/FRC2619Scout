@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+
+# Node (not used today, but don't accidentally commit)
+node_modules/
